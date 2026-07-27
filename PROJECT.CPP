@@ -1,10 +1,8 @@
 #include<stdio.h>
-#include<conio.h>
 #include<string.h>
-void main()
+int main()
 {
 float income,tax=0;
-clrscr();
 FILE*fp;
 printf("\nenter your annual income:");
 scanf("%f",&income);
@@ -22,11 +20,11 @@ else{
 tax=200000+(income-2000000)*0.30;}
 printf("\nannual income:Rs.%2f\n",income);
 printf("TAX NEED TO PAY:Rs.%2f\n",tax);
-fp=fopen("tax_bill.docx","w");
+fp=fopen("tax_bill.txt","w");
 if(fp==NULL)
 {
 printf("error could not find the details try again.\n");
-getch();
+return 1;
 }
 fprintf(fp,"-----------Income Tax Report-------------\n");
 fprintf(fp,"ANNUAL INCOME:Rs.%2f\n",income);
@@ -34,6 +32,6 @@ fprintf(fp,"TAX NEED TO PAY:Rs.%2f\n",tax);
 fprintf(fp,"-----------------------------------------\n");
 fprintf(fp,"----checked by officer ------------------\n");
 fclose(fp);
-printf("\nResult saved to tax_bill.docx");
-getch();
+printf("\nResult saved to tax_bill.txt");
+return 0;
 }
